@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME } from '../config/site';
+
+const lastUpdate = '7 de mayo de 2026';
+const isoDate = '2026-05-07';
+---
+
+<Base
+  title={`Política de privacidad | ${SITE_NAME}`}
+  description="Información sobre el tratamiento de datos personales y derechos del usuario en este sitio."
+  canonicalPath="/politica-privacidad/"
+  ogType="website"
+>
+  <article class="mx-auto max-w-3xl px-6 py-16 md:py-20 lg:py-24">
+    <header class="mb-12">
+      <p class="eyebrow">Legal</p>
+      <h1 class="mt-5 text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+        Política de privacidad
+      </h1>
+      <p class="mt-5 text-sm text-slate-500 tabular-nums">
+        Última actualización: <time datetime={isoDate}>{lastUpdate}</time>
+      </p>
+    </header>
+
+    <div class="article-body">
+      <p>Esta política describe cómo se recoge y trata la información personal en este sitio web, qué datos se obtienen, con qué finalidad, durante cuánto tiempo se conservan y qué derechos tiene el usuario sobre ellos.</p>
+
+      <h2>Responsable del tratamiento</h2>
+      <p>El responsable del tratamiento de los datos es <strong>[NOMBRE DEL TITULAR]</strong>, con NIF [NIF] y dirección en [DIRECCIÓN]. Para cualquier cuestión relacionada con la protección de datos, puede escribir a <a href="mailto:[EMAIL DE CONTACTO]">[EMAIL DE CONTACTO]</a>.</p>
+
+      <h2>Datos que se recogen</h2>
+      <p>El sitio puede recoger los siguientes datos:</p>
+      <ul>
+        <li><strong>Datos de navegación</strong>: dirección IP, tipo de dispositivo, navegador, páginas visitadas y tiempo de permanencia. Se obtienen automáticamente mediante cookies y tecnologías similares.</li>
+        <li><strong>Datos facilitados voluntariamente</strong>: cuando el usuario contacta por correo electrónico, se recogen la dirección de correo y el contenido del mensaje únicamente para responder a la consulta.</li>
+      </ul>
+      <p>No se recogen datos sensibles ni se utilizan formularios que requieran autenticación.</p>
+
+      <h2>Finalidad del tratamiento</h2>
+      <p>Los datos se tratan para los siguientes fines:</p>
+      <ul>
+        <li>Garantizar el funcionamiento técnico del sitio y prevenir abusos.</li>
+        <li>Analizar de forma agregada el uso del sitio para mejorar el contenido.</li>
+        <li>Responder a las consultas recibidas por correo electrónico.</li>
+        <li>Mostrar publicidad mediante Google AdSense, cuando el usuario haya aceptado el uso de cookies de terceros.</li>
+      </ul>
+
+      <h2>Base jurídica</h2>
+      <p>El tratamiento se basa en:</p>
+      <ul>
+        <li>El <strong>consentimiento</strong> del usuario para las cookies no estrictamente necesarias y para la publicidad personalizada.</li>
+        <li>El <strong>interés legítimo</strong> en mantener el sitio operativo, seguro y libre de abusos.</li>
+        <li>La <strong>ejecución de una solicitud</strong> del usuario cuando contacta voluntariamente.</li>
+      </ul>
+
+      <h2>Conservación de los datos</h2>
+      <p>Los datos de navegación se conservan durante el tiempo estrictamente necesario para los fines descritos, y nunca más allá de 26 meses. Los correos recibidos se conservan mientras la conversación esté activa y hasta tres años después.</p>
+
+      <h2>Destinatarios y transferencias internacionales</h2>
+      <p>Algunos datos pueden ser tratados por los siguientes proveedores, exclusivamente para los fines descritos:</p>
+      <ul>
+        <li><strong>Proveedor de hosting</strong>: [NOMBRE PROVEEDOR HOSTING], que aloja los archivos del sitio.</li>
+        <li><strong>Google AdSense</strong> (Google Ireland Ltd.): para mostrar publicidad. Google puede tratar los datos en servidores fuera del Espacio Económico Europeo bajo cláusulas contractuales tipo aprobadas por la Comisión Europea.</li>
+      </ul>
+
+      <h2>Derechos del usuario</h2>
+      <p>Conforme al RGPD y la LOPDGDD, el usuario puede ejercer en cualquier momento los siguientes derechos:</p>
+      <ul>
+        <li>Acceso a sus datos.</li>
+        <li>Rectificación de datos inexactos.</li>
+        <li>Supresión cuando ya no sean necesarios.</li>
+        <li>Limitación del tratamiento en los casos previstos por la ley.</li>
+        <li>Portabilidad de los datos a otro responsable.</li>
+        <li>Oposición al tratamiento por motivos de su situación particular.</li>
+        <li>Retirar el consentimiento en cualquier momento.</li>
+      </ul>
+      <p>Para ejercer estos derechos puede escribir a <a href="mailto:[EMAIL DE CONTACTO]">[EMAIL DE CONTACTO]</a>. Si considera que el tratamiento no se ajusta a la normativa, puede presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="nofollow noopener" target="_blank">aepd.es</a>).</p>
+
+      <h2>Cookies</h2>
+      <p>El sitio utiliza cookies estrictamente necesarias para su funcionamiento y, opcionalmente, cookies de medición y publicidad. La información detallada sobre cada cookie y la forma de gestionarlas está en la <a href="/cookies/">política de cookies</a>.</p>
+
+      <h2>Modificaciones</h2>
+      <p>Esta política puede actualizarse para reflejar cambios legales, técnicos o de los servicios utilizados. La fecha de la última actualización aparece al inicio del documento.</p>
+
+      <h2>Legislación aplicable</h2>
+      <p>Esta política se rige por el Reglamento (UE) 2016/679 (RGPD), la Ley Orgánica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD), y la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE).</p>
+    </div>
+  </article>
+</Base>

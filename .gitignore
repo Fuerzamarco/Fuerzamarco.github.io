@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv*/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# Claude Code local
+.claude/
+
+# Datos generados
+# Los artículos SE VERSIONAN (son el contenido del sitio que va a producción).
+# keywords y cache son artefactos de research, no entran en el build.
+data/keywords/*
+data/cache/*
+!data/keywords/.gitkeep
+!data/cache/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+desktop.ini

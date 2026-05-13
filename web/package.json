@@ -1,0 +1,22 @@
+{
+  "name": "ai-seo-system-web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sitio estático Astro que consume los markdown generados por la pipeline en data/articles",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@tailwindcss/vite": "^4",
+    "astro": "^5",
+    "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

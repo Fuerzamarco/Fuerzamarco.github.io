@@ -1,0 +1,73 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { PAGE_SIZE, SITE_NAME } from '../../../config/site';
+
+export async function getStaticPaths() {
+  const all = await getCollection('articles');
+  const sorted = all.sort(
+    (a, b) => b.data.created_at.valueOf() - a.data.created_at.valueOf()
+  );
+  const lastPage = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+
+  const paths: Array<{
+    params: { page: string };
+    props: {
+      currentPage: number;
+      lastPage: number;
+      items: CollectionEntry<'articles'>[];
+    };
+  }> = [];
+
+  for (let p = 2; p <= lastPage; p++) {
+    paths.push({
+      params: { page: String(p) },
+      props: {
+        currentPage: p,
+        lastPage,
+        items: sorted.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE),
+      },
+    });
+  }
+  return paths;
+}
+
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  items: CollectionEntry<'articles'>[];
+}
+
+const { currentPage, lastPage, items } = Astro.props;
+const canonicalPath = `/articulos/pagina/${currentPage}/`;
+---
+
+<Base
+  title={`Artículos · página ${currentPage} | ${SITE_NAME}`}
+  description={`Página ${currentPage} de ${lastPage} de los artículos publicados.`}
+  canonicalPath={canonicalPath}
+  ogType="website"
+>
+  <section class="bg-slate-50/40">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+          Artículos
+        </h1>
+        <p class="mt-4 text-base text-slate-600 tabular-nums">
+          Página {currentPage} de {lastPage}
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        {items.map((article) => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+
+      <Pagination currentPage={currentPage} lastPage={lastPage} basePath="/articulos" />
+    </div>
+  </section>
+</Base>

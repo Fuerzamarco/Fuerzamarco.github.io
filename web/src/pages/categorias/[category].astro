@@ -1,0 +1,90 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { slugify } from '../../lib/slugify';
+import { buildBreadcrumbSchema } from '../../lib/schema';
+import { SITE_NAME } from '../../config/site';
+
+export async function getStaticPaths() {
+  const all = await getCollection('articles');
+  const map = new Map<
+    string,
+    { label: string; articles: CollectionEntry<'articles'>[] }
+  >();
+
+  for (const article of all) {
+    const cat = article.data.category;
+    if (!cat) continue;
+    const slug = slugify(cat);
+    if (!map.has(slug)) {
+      map.set(slug, { label: cat, articles: [] });
+    }
+    map.get(slug)!.articles.push(article);
+  }
+
+  return [...map.entries()].map(([slug, { label, articles }]) => ({
+    params: { category: slug },
+    props: {
+      label,
+      articles: articles.sort(
+        (a, b) => b.data.created_at.valueOf() - a.data.created_at.valueOf()
+      ),
+    },
+  }));
+}
+
+interface Props {
+  label: string;
+  articles: CollectionEntry<'articles'>[];
+}
+
+const { label, articles } = Astro.props;
+const total = articles.length;
+const canonicalPath = `/categorias/${slugify(label)}/`;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { label: 'Inicio', url: `${siteUrl}/` },
+  { label: 'Artículos', url: `${siteUrl}/articulos/` },
+  { label, url: `${siteUrl}${canonicalPath}` },
+]);
+---
+
+<Base
+  title={`${label} | ${SITE_NAME}`}
+  description={`Artículos publicados en la categoría ${label}.`}
+  canonicalPath={canonicalPath}
+  ogType="website"
+>
+  <Fragment slot="head">
+    <JsonLd data={breadcrumbSchema} />
+  </Fragment>
+
+  <section class="bg-slate-50/40">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <Breadcrumb items={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Artículos', href: '/articulos/' },
+        { label }
+      ]} />
+      <header class="mt-8 mb-12">
+        <p class="eyebrow">Categoría</p>
+        <h1 class="mt-5 text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+          {label}
+        </h1>
+        <p class="mt-4 text-base text-slate-600 tabular-nums">
+          {total} {total === 1 ? 'artículo' : 'artículos'}.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        {articles.map((article) => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

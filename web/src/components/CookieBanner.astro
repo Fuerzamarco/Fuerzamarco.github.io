@@ -1,0 +1,118 @@
+---
+// Banner de cookies "informativo" (no CMP estricta).
+// JS inline mínimo: lee localStorage, muestra el banner si no hay consentimiento,
+// guarda en localStorage al pulsar Aceptar.
+// Para cumplimiento GDPR estricto + IAB TCF, sustituir por una CMP real.
+---
+
+<aside
+  id="cookie-banner"
+  hidden
+  role="complementary"
+  aria-label="Aviso de cookies"
+  class="cookie-banner"
+>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      Este sitio usa cookies necesarias y, opcionalmente, de terceros para publicidad.
+      <a href="/cookies/">Más información</a>.
+    </p>
+    <button
+      type="button"
+      id="cookie-accept"
+      class="cookie-banner-button"
+    >
+      Aceptar
+    </button>
+  </div>
+</aside>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: white;
+    border-top: 1px solid rgb(226 232 240);
+    padding: 12px 16px;
+  }
+
+  .cookie-banner-inner {
+    max-width: 1152px;
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+  }
+
+  .cookie-banner-text {
+    margin: 0;
+    flex: 1 1 320px;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgb(51 65 85);
+  }
+
+  .cookie-banner-text a {
+    color: rgb(67 56 202);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .cookie-banner-text a:hover {
+    color: rgb(55 48 163);
+  }
+
+  .cookie-banner-button {
+    display: inline-block;
+    background: rgb(15 23 42);
+    color: white;
+    border: 0;
+    padding: 7px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 150ms;
+    flex-shrink: 0;
+  }
+
+  .cookie-banner-button:hover {
+    background: rgb(2 6 23);
+  }
+
+  .cookie-banner-button:focus-visible {
+    outline: 2px solid rgb(199 210 254);
+    outline-offset: 3px;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'cookie-consent-accepted';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    try {
+      if (localStorage.getItem(KEY) === '1') return;
+    } catch (e) {
+      // localStorage no disponible (modo privado, etc.) — mostrar igual
+    }
+    banner.hidden = false;
+    var btn = document.getElementById('cookie-accept');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        try {
+          localStorage.setItem(KEY, '1');
+        } catch (e) {
+          // ignorar
+        }
+        banner.hidden = true;
+      });
+    }
+  })();
+</script>

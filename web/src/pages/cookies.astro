@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME } from '../config/site';
+
+const lastUpdate = '7 de mayo de 2026';
+const isoDate = '2026-05-07';
+---
+
+<Base
+  title={`Política de cookies | ${SITE_NAME}`}
+  description="Información sobre las cookies utilizadas en este sitio y cómo gestionarlas."
+  canonicalPath="/cookies/"
+  ogType="website"
+>
+  <article class="mx-auto max-w-3xl px-6 py-16 md:py-20 lg:py-24">
+    <header class="mb-12">
+      <p class="eyebrow">Legal</p>
+      <h1 class="mt-5 text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+        Política de cookies
+      </h1>
+      <p class="mt-5 text-sm text-slate-500 tabular-nums">
+        Última actualización: <time datetime={isoDate}>{lastUpdate}</time>
+      </p>
+    </header>
+
+    <div class="article-body">
+      <p>Esta política explica qué cookies utiliza el sitio, con qué finalidad y cómo el usuario puede gestionarlas o desactivarlas. Forma parte de la <a href="/politica-privacidad/">política de privacidad</a>.</p>
+
+      <h2>Qué son las cookies</h2>
+      <p>Una cookie es un pequeño archivo que el sitio web descarga en el dispositivo del usuario al visitarlo. Permite reconocer el dispositivo en visitas posteriores, recordar preferencias y, en algunos casos, analizar de forma agregada cómo se usa el sitio o mostrar publicidad.</p>
+
+      <h2>Cookies utilizadas</h2>
+      <p>El sitio utiliza las siguientes categorías de cookies:</p>
+
+      <h3>Cookies estrictamente necesarias</h3>
+      <p>Imprescindibles para que el sitio funcione. Recuerdan, por ejemplo, si el usuario ya aceptó el aviso de cookies. No requieren consentimiento.</p>
+      <ul>
+        <li><code>cookie-consent-accepted</code> — almacenamiento local que registra la aceptación del aviso. Se conserva en el navegador del usuario hasta que la borre manualmente.</li>
+      </ul>
+
+      <h3>Cookies de medición</h3>
+      <p>Permiten analizar de forma agregada el uso del sitio. Actualmente el sitio no utiliza herramientas de analítica que requieran consentimiento; si se incorporan en el futuro, se actualizará esta política y se solicitará el consentimiento correspondiente.</p>
+
+      <h3>Cookies de publicidad (terceros)</h3>
+      <p>El sitio puede mostrar publicidad a través de <strong>Google AdSense</strong> (Google Ireland Ltd.). Cuando el usuario acepta las cookies, Google puede instalar cookies en el dispositivo para personalizar los anuncios y medir su rendimiento.</p>
+      <p>Más información sobre cómo Google trata estos datos: <a href="https://policies.google.com/technologies/ads" rel="nofollow noopener" target="_blank">policies.google.com/technologies/ads</a>.</p>
+
+      <h2>Gestión de cookies</h2>
+      <p>El usuario puede aceptar o rechazar las cookies no necesarias en el aviso que aparece al primer acceso. Adicionalmente, puede en cualquier momento:</p>
+      <ul>
+        <li>Borrar las cookies almacenadas desde la configuración del navegador.</li>
+        <li>Configurar el navegador para bloquear todas las cookies o avisar antes de instalarlas.</li>
+        <li>Gestionar la publicidad personalizada de Google en <a href="https://adssettings.google.com" rel="nofollow noopener" target="_blank">adssettings.google.com</a>.</li>
+      </ul>
+      <p>Los enlaces de ayuda de los principales navegadores:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" rel="nofollow noopener" target="_blank">Chrome</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" rel="nofollow noopener" target="_blank">Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" rel="nofollow noopener" target="_blank">Safari</a></li>
+        <li><a href="https://support.microsoft.com/es-es/microsoft-edge" rel="nofollow noopener" target="_blank">Edge</a></li>
+      </ul>
+
+      <h2>Modificaciones</h2>
+      <p>Esta política puede actualizarse cuando se incorporen, modifiquen o eliminen cookies. La fecha de la última actualización aparece al inicio del documento.</p>
+    </div>
+  </article>
+</Base>

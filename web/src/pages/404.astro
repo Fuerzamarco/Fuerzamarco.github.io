@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME } from '../config/site';
+---
+
+<Base
+  title={`Página no encontrada | ${SITE_NAME}`}
+  description="La página que buscas no existe o ha cambiado de URL."
+  canonicalPath="/404/"
+  ogType="website"
+  noindex
+>
+  <section class="mx-auto max-w-3xl px-6 py-24 md:py-32 text-center">
+    <div class="flex justify-center">
+      <p class="eyebrow">Error 404</p>
+    </div>
+    <h1 class="mt-6 text-5xl md:text-6xl font-bold tracking-tighter leading-[1.05] text-slate-950 text-balance">
+      Esta página no existe
+    </h1>
+    <p class="mt-6 text-lg text-slate-600 leading-relaxed text-pretty">
+      Es posible que la URL sea incorrecta o que el contenido haya cambiado de sitio.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+      <a
+        href="/"
+        class="text-indigo-700 underline underline-offset-4 hover:text-indigo-900 transition-colors duration-150"
+      >
+        Volver al inicio
+      </a>
+      <span aria-hidden="true" class="text-slate-300">·</span>
+      <a
+        href="/articulos/"
+        class="text-slate-700 hover:text-indigo-700 transition-colors duration-150"
+      >
+        Ver todos los artículos
+      </a>
+    </div>
+  </section>
+</Base>

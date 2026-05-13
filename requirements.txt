@@ -1,0 +1,18 @@
+# --- Núcleo (Fase 0–1) ---
+claude-agent-sdk>=0.1.0      # Claude vía suscripción Max, sin API de pago
+pyyaml>=6.0                  # config/settings.yaml
+python-dotenv>=1.0           # carga de .env
+python-slugify>=8.0          # slugs limpios para nombres de archivo
+python-frontmatter>=1.1      # markdown con metadata YAML
+requests>=2.32               # HTTP sin dependencias pesadas
+
+# --- Fase 2 (keywords) ---
+# pytrends>=4.9              # Google Trends sin API key
+# beautifulsoup4>=4.12       # parsing HTML para fuentes scrapeables
+
+# --- Fase 4 (WordPress) ---
+# (requests ya está arriba; la REST API de WP no necesita cliente extra)
+
+# --- Dev ---
+# pytest>=8.0
+# ruff>=0.5

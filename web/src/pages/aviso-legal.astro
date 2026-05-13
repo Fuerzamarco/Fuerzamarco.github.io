@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME } from '../config/site';
+
+const lastUpdate = '7 de mayo de 2026';
+const isoDate = '2026-05-07';
+---
+
+<Base
+  title={`Aviso legal | ${SITE_NAME}`}
+  description="Información legal y condiciones de uso del sitio."
+  canonicalPath="/aviso-legal/"
+  ogType="website"
+>
+  <article class="mx-auto max-w-3xl px-6 py-16 md:py-20 lg:py-24">
+    <header class="mb-12">
+      <p class="eyebrow">Legal</p>
+      <h1 class="mt-5 text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+        Aviso legal
+      </h1>
+      <p class="mt-5 text-sm text-slate-500 tabular-nums">
+        Última actualización: <time datetime={isoDate}>{lastUpdate}</time>
+      </p>
+    </header>
+
+    <div class="article-body">
+      <p>De conformidad con la Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilita la información identificativa del titular del sitio y las condiciones que regulan su uso.</p>
+
+      <h2>Datos identificativos</h2>
+      <p>El titular de este sitio es <strong>[NOMBRE DEL TITULAR]</strong>, con NIF [NIF], domicilio en [DIRECCIÓN] y correo electrónico de contacto <a href="mailto:[EMAIL DE CONTACTO]">[EMAIL DE CONTACTO]</a>.</p>
+
+      <h2>Objeto</h2>
+      <p>El sitio publica análisis y guías editoriales con criterios EEAT explícitos. El acceso al contenido es libre y gratuito, sin necesidad de registro.</p>
+
+      <h2>Condiciones de acceso y uso</h2>
+      <p>El usuario se compromete a hacer un uso lícito de los contenidos del sitio. En particular, no podrá:</p>
+      <ul>
+        <li>Copiar, reproducir o distribuir los contenidos sin autorización expresa, salvo en lo permitido por la Ley de Propiedad Intelectual.</li>
+        <li>Realizar acciones que dañen, sobrecarguen o alteren el funcionamiento normal del sitio.</li>
+        <li>Suplantar la identidad de terceros o utilizar el sitio con fines fraudulentos.</li>
+      </ul>
+
+      <h2>Propiedad intelectual</h2>
+      <p>Los textos, imágenes, marcas, logotipos y demás elementos del sitio son propiedad del titular o de terceros que han autorizado su uso. Está prohibida su reproducción, distribución o comunicación pública sin autorización previa, excepto cuando lo permita expresamente la legislación vigente.</p>
+
+      <h2>Naturaleza del contenido y responsabilidad</h2>
+      <p>Los artículos publicados se generan y revisan con apoyo de inteligencia artificial bajo criterios editoriales propios. El contenido tiene carácter informativo y no constituye asesoramiento profesional. El usuario debe contrastar la información antes de tomar decisiones que dependan de ella.</p>
+      <p>El titular procura mantener la información actualizada y veraz, pero no garantiza la ausencia de errores ni la disponibilidad continua del sitio. En la medida que la ley lo permita, queda excluida cualquier responsabilidad por daños derivados del uso del sitio o de la imposibilidad de uso.</p>
+
+      <h2>Enlaces a sitios de terceros</h2>
+      <p>El sitio puede contener enlaces a páginas externas. El titular no es responsable del contenido, las prácticas o las políticas de privacidad de esos sitios, cuyo uso se rige por sus propios términos.</p>
+
+      <h2>Publicidad</h2>
+      <p>El sitio puede mostrar publicidad mediante Google AdSense u otras redes. La publicidad se identifica visualmente y no implica recomendación editorial. El tratamiento de datos por parte de los proveedores publicitarios se rige por sus propias políticas, accesibles desde la <a href="/cookies/">política de cookies</a>.</p>
+
+      <h2>Modificaciones</h2>
+      <p>El titular se reserva el derecho a modificar el contenido del sitio y este aviso legal en cualquier momento. La versión vigente es la publicada en el momento del acceso.</p>
+
+      <h2>Legislación y jurisdicción</h2>
+      <p>Este aviso legal se rige por la legislación española. Para cualquier controversia derivada del uso del sitio, las partes se someten a los juzgados y tribunales correspondientes al domicilio del titular, salvo que la legislación aplicable disponga otra cosa.</p>
+    </div>
+  </article>
+</Base>

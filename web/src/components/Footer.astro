@@ -1,0 +1,31 @@
+---
+import { SITE_NAME } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-200">
+  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm text-slate-600">
+    <p>© {year} {SITE_NAME}</p>
+    <nav aria-label="Secundaria" class="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <a
+        href="/politica-privacidad/"
+        class="hover:text-slate-900 transition-colors duration-150"
+      >
+        Política de privacidad
+      </a>
+      <a
+        href="/aviso-legal/"
+        class="hover:text-slate-900 transition-colors duration-150"
+      >
+        Aviso legal
+      </a>
+      <a
+        href="/cookies/"
+        class="hover:text-slate-900 transition-colors duration-150"
+      >
+        Cookies
+      </a>
+    </nav>
+  </div>
+</footer>

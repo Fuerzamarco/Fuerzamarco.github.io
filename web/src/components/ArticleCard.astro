@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { slugify } from '../lib/slugify';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const { title, meta_description, created_at, category, primary_keyword } =
+  article.data;
+const articleHref = `/articulos/${article.id}/`;
+
+const eyebrowLabel = category ?? primary_keyword;
+const categoryHref = category ? `/categorias/${slugify(category)}/` : null;
+
+const day = String(created_at.getDate()).padStart(2, '0');
+const monthShort = created_at
+  .toLocaleDateString('es-ES', { month: 'short' })
+  .replace('.', '');
+const year = created_at.getFullYear();
+const formattedDate = `${day} ${monthShort} ${year}`;
+---
+
+<article class="group relative flex flex-col gap-3 transition-transform duration-150 ease-out hover:-translate-y-px">
+  {eyebrowLabel && (
+    categoryHref ? (
+      <p class="eyebrow relative z-10">
+        <a
+          href={categoryHref}
+          class="transition-colors duration-150 hover:text-indigo-700"
+        >
+          {eyebrowLabel}
+        </a>
+      </p>
+    ) : (
+      <p class="eyebrow">{eyebrowLabel}</p>
+    )
+  )}
+  <h2 class="text-xl font-semibold leading-snug tracking-tight text-slate-900">
+    <a
+      href={articleHref}
+      class="before:absolute before:inset-0 before:content-['']"
+    >
+      <span class="link-underline-grow">{title}</span>
+    </a>
+  </h2>
+  <p class="text-sm leading-relaxed text-slate-700 line-clamp-2 text-pretty">
+    {meta_description}
+  </p>
+  <time
+    datetime={created_at.toISOString()}
+    class="text-xs text-slate-500 tabular-nums"
+  >
+    {formattedDate}
+  </time>
+</article>

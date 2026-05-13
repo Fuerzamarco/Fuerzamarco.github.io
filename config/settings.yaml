@@ -1,0 +1,82 @@
+# Configuración del sistema. Edita estos valores según el sitio/nicho.
+
+site:
+  name: "Mi Sitio SEO"
+  base_url: "https://tu-sitio.com"
+  language: "es"
+  locale: "es_ES"
+
+# Perfil editorial usado en los prompts.
+editorial:
+  niche: "tecnología y productividad"
+  audience: "lectores hispanohablantes con conocimientos básicos"
+  tone: "claro, directo, sin relleno"
+  reading_level: "intermedio"
+
+  # Voz: editorial-expert (3a persona analítica, sin fingir experiencia personal)
+  # Alternativa: strict-third-person (sin "nosotros" tampoco)
+  voice: "editorial-expert"
+
+  # Estrategia de longitud:
+  #   adaptive-by-intent → el prompt decide según search_intent (Recomendado)
+  #   pillar-always      → 2500-4000 siempre
+  #   concise-always     → 1500-2500 siempre
+  length_strategy: "adaptive-by-intent"
+
+  # Frases prohibidas (extiende los anti-AI-isms ya hardcodeados en el prompt).
+  forbidden_phrases:
+    - "en el mundo digital actual"
+    - "en este artículo exploraremos"
+    - "es importante destacar que"
+    - "cabe mencionar que"
+    - "robusto y potente"
+    - "embárcate en"
+    - "sin más preámbulos"
+
+  # Énfasis EEAT que el redactor debe cubrir explícitamente.
+  eeat_emphasis:
+    - "trade-offs explícitos en cada recomendación"
+    - "casos límite y excepciones documentadas"
+    - "fuentes oficiales referenciadas por nombre"
+    - "cifras concretas o explícitamente cualitativas (nunca inventadas)"
+
+  # Categorías permitidas. El redactor debe elegir UNA exactamente.
+  # Edítalas según tu nicho. Cambiarlas tras publicar requiere actualizar
+  # los .md existentes y posibles redirects 301.
+  categories:
+    - "Tecnología"
+    - "Productividad"
+    - "Software"
+    - "Herramientas"
+
+# Parámetros por defecto del generador de artículos.
+# (min_words / max_words quedan como fallback si la longitud adaptativa no aplica.)
+article_defaults:
+  min_words: 1500
+  max_words: 3000
+  headings_style: "H2 + H3"
+  include_toc: false
+  include_meta_description: true
+  include_faq: true
+
+# Fuentes de keywords activas. (Se irán habilitando por fase.)
+keyword_sources:
+  google_suggest:
+    enabled: true
+    max_per_seed: 20
+    languages: ["es"]
+  pytrends:
+    enabled: false
+  wikipedia:
+    enabled: false
+  reddit:
+    enabled: false
+
+# Publishers disponibles. El MVP solo usa "markdown".
+publishers:
+  active: "markdown"
+  markdown:
+    output_dir: "data/articles"
+  wordpress:
+    enabled: false
+    default_status: "draft"   # draft | publish

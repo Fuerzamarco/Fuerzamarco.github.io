@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Pagination from '../../components/Pagination.astro';
+import { PAGE_SIZE, SITE_NAME } from '../../config/site';
+
+const all = await getCollection('articles');
+const sorted = all.sort(
+  (a, b) => b.data.created_at.valueOf() - a.data.created_at.valueOf()
+);
+const items = sorted.slice(0, PAGE_SIZE);
+const total = sorted.length;
+const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
+---
+
+<Base
+  title={`Artículos | ${SITE_NAME}`}
+  description="Todos los artículos publicados, ordenados por fecha. Análisis y guías editoriales con criterios EEAT explícitos."
+  canonicalPath="/articulos/"
+  ogType="website"
+>
+  <section class="bg-slate-50/40">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+          Artículos
+        </h1>
+        <p class="mt-4 text-base text-slate-600 tabular-nums">
+          {total === 0
+            ? 'Aún no hay artículos publicados.'
+            : `${total} ${total === 1 ? 'artículo publicado' : 'artículos publicados'}.`}
+        </p>
+      </header>
+
+      {items.length > 0 && (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          {items.map((article) => (
+            <ArticleCard article={article} />
+          ))}
+        </div>
+      )}
+
+      <Pagination currentPage={1} lastPage={lastPage} basePath="/articulos" />
+    </div>
+  </section>
+</Base>

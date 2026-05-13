@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@layer base {
+  body {
+    @apply bg-white text-slate-800 antialiased min-h-screen flex flex-col;
+    font-family: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  ::selection {
+    background-color: rgb(224 231 255 / 0.7); /* indigo-100 */
+    color: rgb(15 23 42);
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgb(199 210 254); /* indigo-200 */
+    outline-offset: 3px;
+  }
+
+  /* Article body ----------------------------------- */
+
+  .article-body > p:first-child {
+    @apply text-[19px] leading-[1.65] text-slate-700 mt-0 mb-6;
+    text-wrap: pretty;
+  }
+  .article-body p {
+    @apply text-[17px] leading-[1.75] text-slate-800 my-5;
+    text-wrap: pretty;
+  }
+  .article-body h2 {
+    @apply text-2xl font-semibold tracking-tight text-slate-900 mt-12 pt-10 mb-4;
+    border-top: 1px solid rgb(226 232 240);
+  }
+  .article-body h3 {
+    @apply text-xl font-semibold text-slate-900 mt-8 mb-2;
+  }
+  .article-body ul {
+    @apply my-5 ml-6 list-disc text-[17px] leading-[1.75] text-slate-800;
+  }
+  .article-body ol {
+    @apply my-5 ml-6 list-decimal text-[17px] leading-[1.75] text-slate-800;
+  }
+  .article-body li {
+    @apply my-1;
+  }
+  .article-body a {
+    @apply text-indigo-600 underline underline-offset-4 decoration-1 hover:text-indigo-800 transition-colors duration-150;
+  }
+  .article-body strong {
+    @apply font-semibold text-slate-900;
+  }
+  .article-body blockquote {
+    @apply border-l-2 border-slate-300 pl-4 italic my-6 text-slate-700;
+  }
+  .article-body table {
+    @apply w-full border-collapse my-8 text-sm tabular-nums;
+  }
+  .article-body th,
+  .article-body td {
+    @apply border border-slate-200 px-3 py-2 text-left align-top;
+  }
+  .article-body th {
+    @apply bg-slate-50 font-semibold text-slate-900;
+  }
+  .article-body code {
+    @apply bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded text-[0.9em] font-mono;
+  }
+  .article-body pre {
+    @apply bg-slate-900 text-slate-50 p-4 rounded my-6 overflow-x-auto text-sm font-mono;
+  }
+  .article-body pre code {
+    @apply bg-transparent border-0 p-0;
+  }
+  .article-body hr {
+    @apply my-10 border-slate-200;
+  }
+}
+
+@layer components {
+  /* Eyebrow micro-cap con barra de marca (▎) */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] font-medium text-slate-700;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    background-color: rgb(79 70 229); /* indigo-600 */
+    flex-shrink: 0;
+  }
+
+  /* Underline-grow en hover, activado por ancestro .group */
+  .link-underline-grow {
+    background-image: linear-gradient(to right, rgb(79 70 229), rgb(79 70 229)); /* indigo-600 */
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 200ms ease-out;
+  }
+  .group:hover .link-underline-grow,
+  .group:focus-visible .link-underline-grow {
+    background-size: 100% 1px;
+  }
+}

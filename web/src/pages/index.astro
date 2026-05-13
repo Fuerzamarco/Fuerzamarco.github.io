@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { SITE_NAME, SITE_DESCRIPTION } from '../config/site';
+
+const all = await getCollection('articles');
+const sorted = all.sort(
+  (a, b) => b.data.created_at.valueOf() - a.data.created_at.valueOf()
+);
+const featured = sorted.slice(0, 6);
+const hasArticles = featured.length > 0;
+---
+
+<Base
+  title={SITE_NAME}
+  description={SITE_DESCRIPTION}
+  canonicalPath="/"
+  ogType="website"
+>
+  <section class="relative overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(900px 500px at 50% 30%, rgb(79 70 229 / 0.07), transparent 70%);"
+    ></div>
+    <div class="relative z-10 mx-auto max-w-3xl px-6 py-24 md:py-28 lg:py-32">
+      <p class="eyebrow">Editorial</p>
+      <h1 class="mt-6 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.05] text-slate-950 text-balance">
+        Análisis y guías sobre <span class="text-indigo-600">tecnología</span> y productividad
+      </h1>
+      <p class="mt-7 text-xl md:text-2xl leading-relaxed text-slate-700 text-pretty">
+        Análisis técnicos en profundidad, sin relleno y con criterios EEAT explícitos.
+      </p>
+      <p class="mt-5 text-sm leading-relaxed text-slate-600 text-pretty">
+        El contenido se genera y revisa con una pipeline editorial asistida por IA bajo reglas estrictas: trade-offs documentados en cada recomendación, fuentes referenciadas por nombre, y cero fabricación de experiencia personal.
+      </p>
+    </div>
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-slate-50/40"></div>
+  </section>
+
+  <section class="bg-slate-50/40">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <div class="mb-10 flex items-end justify-between">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
+          Últimos artículos
+        </h2>
+        {hasArticles && (
+          <a
+            href="/articulos/"
+            class="text-sm text-slate-600 transition-colors duration-150 hover:text-indigo-700"
+          >
+            Ver todos →
+          </a>
+        )}
+      </div>
+
+      {hasArticles ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          {featured.map((article) => (
+            <ArticleCard article={article} />
+          ))}
+        </div>
+      ) : (
+        <p class="text-sm text-slate-600">
+          Aún no hay artículos publicados. Genera el primero con la pipeline Python.
+        </p>
+      )}
+    </div>
+  </section>
+</Base>

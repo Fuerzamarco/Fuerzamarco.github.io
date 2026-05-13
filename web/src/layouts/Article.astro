@@ -1,0 +1,101 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { slugify } from '../lib/slugify';
+import { parseFaqs } from '../lib/faq-parser';
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+} from '../lib/schema';
+import { SITE_NAME } from '../config/site';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const {
+  title,
+  meta_description,
+  created_at,
+  updated_at,
+  primary_keyword,
+  category,
+} = article.data;
+const canonicalPath = `/articulos/${article.id}/`;
+
+const breadcrumbItems = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Artículos', href: '/articulos/' },
+  ...(category
+    ? [{ label: category, href: `/categorias/${slugify(category)}/` }]
+    : []),
+];
+
+// JSON-LD ----------------------------------------------------------------
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const ctx = { siteUrl, siteName: SITE_NAME };
+
+const articleSchema = buildArticleSchema(article, ctx);
+
+const breadcrumbSchemaItems = [
+  { label: 'Inicio', url: `${siteUrl}/` },
+  { label: 'Artículos', url: `${siteUrl}/articulos/` },
+  ...(category
+    ? [
+        {
+          label: category,
+          url: `${siteUrl}/categorias/${slugify(category)}/`,
+        },
+      ]
+    : []),
+  { label: title, url: `${siteUrl}${canonicalPath}` },
+];
+const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbSchemaItems);
+
+const faqs = parseFaqs(article.body ?? '');
+const faqSchema = buildFaqSchema(faqs);
+// ------------------------------------------------------------------------
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+---
+
+<Base
+  title={title}
+  description={meta_description}
+  canonicalPath={canonicalPath}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <JsonLd data={articleSchema} />
+    <JsonLd data={breadcrumbSchema} />
+    {faqSchema && <JsonLd data={faqSchema} />}
+  </Fragment>
+
+  <article class="mx-auto max-w-3xl px-6 py-16 md:py-20 lg:py-24">
+    <Breadcrumb items={breadcrumbItems} />
+    <header class="mt-8 mb-12">
+      <p class="eyebrow">{primary_keyword}</p>
+      <h1 class="mt-5 text-4xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-slate-950 text-balance">
+        {title}
+      </h1>
+      <p class="mt-5 text-sm text-slate-500 tabular-nums">
+        <time datetime={created_at.toISOString()}>{formatDate(created_at)}</time>
+        {updated_at && (
+          <span> · Actualizado {formatDate(updated_at)}</span>
+        )}
+      </p>
+    </header>
+    <div class="article-body">
+      <slot />
+    </div>
+  </article>
+</Base>

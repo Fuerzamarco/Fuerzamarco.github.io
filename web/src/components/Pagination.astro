@@ -1,0 +1,84 @@
+---
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  basePath: string;
+}
+
+const { currentPage, lastPage, basePath } = Astro.props;
+
+function pageHref(p: number): string {
+  return p === 1 ? `${basePath}/` : `${basePath}/pagina/${p}/`;
+}
+
+function getPageList(): Array<number | 'ellipsis'> {
+  if (lastPage <= 7) {
+    return Array.from({ length: lastPage }, (_, i) => i + 1);
+  }
+  const result: Array<number | 'ellipsis'> = [1];
+  const start = Math.max(2, currentPage - 1);
+  const end = Math.min(lastPage - 1, currentPage + 1);
+  if (start > 2) result.push('ellipsis');
+  for (let i = start; i <= end; i++) result.push(i);
+  if (end < lastPage - 1) result.push('ellipsis');
+  result.push(lastPage);
+  return result;
+}
+
+const pages = getPageList();
+const hasPrev = currentPage > 1;
+const hasNext = currentPage < lastPage;
+---
+
+{lastPage > 1 && (
+  <nav aria-label="Paginación" class="mt-16 flex items-center justify-center gap-2">
+    {hasPrev ? (
+      <a
+        href={pageHref(currentPage - 1)}
+        aria-label="Página anterior"
+        class="px-3 py-2 text-sm text-slate-600 transition-colors duration-150 hover:text-slate-900"
+      >
+        ← Anterior
+      </a>
+    ) : (
+      <span aria-hidden="true" class="px-3 py-2 text-sm text-slate-300">← Anterior</span>
+    )}
+
+    <ol class="flex items-center gap-1">
+      {pages.map((p) => (
+        <li>
+          {p === 'ellipsis' ? (
+            <span aria-hidden="true" class="px-2 py-2 text-sm text-slate-400">…</span>
+          ) : p === currentPage ? (
+            <span
+              aria-current="page"
+              class="px-3 py-2 text-sm font-medium text-slate-950 tabular-nums"
+            >
+              {p}
+            </span>
+          ) : (
+            <a
+              href={pageHref(p)}
+              aria-label={`Página ${p}`}
+              class="px-3 py-2 text-sm text-slate-500 tabular-nums transition-colors duration-150 hover:text-slate-900"
+            >
+              {p}
+            </a>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    {hasNext ? (
+      <a
+        href={pageHref(currentPage + 1)}
+        aria-label="Página siguiente"
+        class="px-3 py-2 text-sm text-slate-600 transition-colors duration-150 hover:text-slate-900"
+      >
+        Siguiente →
+      </a>
+    ) : (
+      <span aria-hidden="true" class="px-3 py-2 text-sm text-slate-300">Siguiente →</span>
+    )}
+  </nav>
+)}

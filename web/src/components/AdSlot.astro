@@ -1,0 +1,54 @@
+---
+/*
+  AdSlot — componente AdSense.
+
+  Comportamiento:
+    - PUBLIC_ADSENSE_PUBLISHER_ID vacío  → renderiza NADA (cero output, cero CLS impact pre-activación).
+    - PUBLIC_ADSENSE_PUBLISHER_ID set    → renderiza <ins class="adsbygoogle"> y push inline.
+                                           El script global adsbygoogle.js lo carga Base.astro condicionalmente.
+
+  Uso:
+    <AdSlot slot="1234567890" height={250} />
+    <AdSlot slot="1234567890" width={728} height={90} format="horizontal" />
+
+  Recomendación de placements (cuando actives):
+    - Article.astro: tras la sección FAQ y antes del Cierre.
+    - Pages de categoría: opcional, con cuidado (no abuses).
+    - Home: NO recomendado pre-monetización; dilute CWV del hero.
+
+  Notas:
+    - `slot` = ID del ad unit en AdSense (NO el publisher ID).
+    - `height` siempre obligatorio para evitar CLS cuando el ad carga.
+    - `format="auto"` deja a AdSense decidir; "horizontal/rectangle/vertical" fuerzan layout.
+*/
+interface Props {
+  slot: string;
+  height: number;
+  width?: number;
+  format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
+  className?: string;
+}
+
+const PUBLISHER_ID = import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID || '';
+const { slot, height, width, format = 'auto', className = '' } = Astro.props;
+const hasAds = Boolean(PUBLISHER_ID && slot);
+
+const wrapperStyle = `max-width:${width ? `${width}px` : '100%'};margin:2.5rem auto;`;
+const insStyle = `display:block;width:100%;height:${height}px;`;
+---
+
+{hasAds && (
+  <div class:list={['adslot', className]} style={wrapperStyle}>
+    <ins
+      class="adsbygoogle"
+      style={insStyle}
+      data-ad-client={`ca-pub-${PUBLISHER_ID}`}
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+)}
