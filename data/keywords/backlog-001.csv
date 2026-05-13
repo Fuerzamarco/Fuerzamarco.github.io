@@ -1,0 +1,31 @@
+keyword,slug,category,cluster,intent,tier,notes
+ChatGPT vs Gemini para estudiar,chatgpt-vs-gemini-estudiar,Tecnología,A,commercial,1,Comparativa honesta por tarea: resumir/explicar/test; destacar plan gratuito vs pago
+Claude vs ChatGPT para estudiantes,claude-vs-chatgpt-estudiantes,Tecnología,A,commercial,1,Foco en honestidad/alucinaciones de Claude vs ecosistema de ChatGPT
+NotebookLM vs Perplexity para investigar,notebooklm-vs-perplexity-investigacion,Tecnología,A,commercial,2,Anclado a fuentes vs citas en tiempo real
+Mejor IA gratis para estudiar,mejor-ia-gratis-estudiar,Tecnología,A,commercial,2,Sólo planes gratuitos; tabla de límites reales 2026
+Mejor IA para estudiar oposiciones,mejor-ia-estudiar-oposiciones,Tecnología,A,commercial,3,Oposiciones públicas españolas; NotebookLM como pillar
+Cómo usar NotebookLM para estudiar,como-usar-notebooklm-estudiar,Tutoriales,B,informational,1,Tutorial paso a paso con caso real de oposición
+Cómo usar ChatGPT para preparar exámenes,como-usar-chatgpt-examenes,Tutoriales,B,informational,1,Flujo concreto: subir temario→generar tests→evaluar
+Cómo usar Gemini para resumir PDFs,como-usar-gemini-resumir-pdf,Tutoriales,B,informational,2,Ventana contexto larga; truco trocear por capítulos
+Cómo crear flashcards con IA,crear-flashcards-con-ia,Tutoriales,B,informational,2,Anki + IA; prompt para extraer Q/A de un PDF
+Cómo hacer mapas mentales con IA,mapas-mentales-con-ia,Tutoriales,B,informational,3,Herramientas: Whimsical AI; Markmap; texto→imagen
+IA para resumir libros,ia-para-resumir-libros,Productividad,C,informational,1,Resumir un libro completo: estrategias y herramientas
+IA para tomar apuntes,ia-para-tomar-apuntes,Productividad,C,informational,1,Apps de transcripción + IA: Otter; Fireflies; Notion AI
+IA para resolver problemas de matemáticas,ia-resolver-matematicas,Productividad,C,informational,2,Honesto sobre limitaciones; cuándo verificar con WolframAlpha
+IA para aprender programación,ia-aprender-programacion,Productividad,C,informational,2,GitHub Copilot/Cursor para aprender; no solo autocompletar
+IA para corregir redacciones,ia-corregir-redacciones,Productividad,C,informational,2,Más allá de Grammarly; foco en español
+IA para hacer trabajos universitarios,ia-trabajos-universitarios,Productividad,C,commercial,3,Ética + uso responsable; cómo no plagiar
+IA para estudiar derecho,ia-estudiar-derecho,Educación,D,informational,2,BOE; jurisprudencia; cuidado con alucinaciones
+IA para estudiar medicina,ia-estudiar-medicina,Educación,D,informational,2,EEAT muy alto; cuidado dosis/farmacología
+IA para preparar la EvAU,ia-evau-selectividad,Educación,D,commercial,3,Selectividad por asignatura; preparación rápida
+IA para el MIR,ia-preparar-mir,Educación,D,commercial,3,NotebookLM con material AMIR/CTO; tests
+IA para certificaciones de inglés,ia-certificaciones-ingles,Educación,D,commercial,3,Cambridge/Trinity/EOI; speaking simulado
+Riesgos de usar IA para estudiar,riesgos-ia-para-estudiar,Educación,E,informational,1,Pillar honesto: alucinaciones/privacidad/plagio
+Cómo detectar alucinaciones de IA,detectar-alucinaciones-ia,Educación,E,informational,2,Técnicas: triangulación/citas/verificación
+Detectores de texto IA cuándo funcionan,detectores-texto-ia-fiabilidad,Educación,E,informational,2,Falsos positivos documentados; postura universidades
+Plagio académico y herramientas IA,plagio-academico-ia,Educación,E,informational,3,Normativa española; cómo usar IA sin plagiar
+Guía completa de IA para estudiar en 2026,guia-ia-para-estudiar-2026,Educación,F,informational,1,Pillar largo que enlaza a TODOS los demás
+Cómo elegir IA para estudio,como-elegir-ia-para-estudio,Educación,F,informational,2,Decision framework: caso de uso→herramienta
+Glosario de IA aplicada a la educación,glosario-ia-educacion,Educación,F,informational,2,Términos: LLM/prompt/contexto/RAG/alucinación
+Privacidad de tus apuntes en IA,privacidad-apuntes-en-ia,Educación,F,informational,3,Políticas reales OpenAI/Google/Anthropic
+Historia de la IA en la educación,historia-ia-educacion,Educación,F,informational,3,Recorrido desde tutores adaptativos a LLMs

@@ -43,11 +43,14 @@ editorial:
   # Categorías permitidas. El redactor debe elegir UNA exactamente.
   # Edítalas según tu nicho. Cambiarlas tras publicar requiere actualizar
   # los .md existentes y posibles redirects 301.
+  # Sub-nicho actual (2026-05-13): "IA para estudio y aprendizaje".
   categories:
-    - "Tecnología"
-    - "Productividad"
-    - "Software"
-    - "Herramientas"
+    - "Tecnología"     # comparativas head-to-head de herramientas IA
+    - "Tutoriales"     # how-to / paso a paso por herramienta
+    - "Productividad"  # IA aplicada a tareas concretas de estudio
+    - "Educación"      # uso por tipo de estudiante/examen, crítica, pilares
+    - "Software"       # (reservado)
+    - "Herramientas"   # (reservado)
 
 # Parámetros por defecto del generador de artículos.
 # (min_words / max_words quedan como fallback si la longitud adaptativa no aplica.)

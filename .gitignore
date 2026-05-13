@@ -19,10 +19,14 @@ venv/
 # Datos generados
 # Los artículos SE VERSIONAN (son el contenido del sitio que va a producción).
 # keywords y cache son artefactos de research, no entran en el build.
+# EXCEPCIÓN: backlogs curados manualmente (backlog-*.csv) sí se versionan.
 data/keywords/*
 data/cache/*
+data/batches/*
 !data/keywords/.gitkeep
+!data/keywords/backlog-*.csv
 !data/cache/.gitkeep
+!data/batches/.gitkeep
 
 # Logs
 *.log
