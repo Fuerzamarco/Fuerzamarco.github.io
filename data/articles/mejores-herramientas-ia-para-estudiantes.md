@@ -5,7 +5,10 @@ meta_description: "Descubre las mejores herramientas IA para estudiantes: redacc
 primary_keyword: "mejores herramientas IA para estudiantes"
 secondary_keywords: ["mejores herramientas de IA para estudiantes"]
 language: "es"
+category: "Tecnología"
+tags: ["herramientas IA", "estudiantes", "apps de estudio", "productividad", "IA educativa"]
 created_at: "2026-05-07"
+updated_at: "2026-05-13"
 ---
 
 # Mejores herramientas IA para estudiantes: guía práctica para 2026

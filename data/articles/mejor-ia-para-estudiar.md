@@ -6,7 +6,10 @@ primary_keyword: "mejor IA para estudiar"
 secondary_keywords: ["mejor IA para estudiar gratis", "mejor IA para estudiar oposiciones", "mejor IA para estudiar matemáticas", "mejor app de IA para estudiar", "mejor IA para hacer resúmenes para estudiar", "mejor IA para estudiar PDF", "IA para estudiar mejor que ChatGPT"]
 language: "es"
 search_intent: "commercial"
+category: "Tecnología"
+tags: ["IA para estudiar", "ChatGPT", "Gemini", "NotebookLM", "comparativa IA"]
 created_at: "2026-05-07"
+updated_at: "2026-05-13"
 internal_links_used: ["mejores-herramientas-ia-para-estudiantes"]
 ---
 
