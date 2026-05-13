@@ -140,11 +140,21 @@ Arquitectura: **monorepo**, Astro vive en `web/` y lee con `glob()` desde `../da
 - [ ] **Aviso GDPR**: el flujo es "consentimiento informativo", no CMP estricta IAB TCF. Para sitios EEA con tráfico significativo, considerar CMP real (degrada CWV).
 - [ ] Verificación: `npm run build` sin errores, banner aparece y desaparece, /ads.txt + 3 páginas legales accesibles, AdSlot no inserto en ningún template (insertar a mano cuando actives).
 
-## Fase G — Deploy
+## Fase G — Deploy ✅ (Netlify live)
 
-- [ ] GitHub Actions: build + cache
-- [ ] Deploy a GitHub Pages (staging) y/o Hostinger (FTP/SSH)
-- [ ] Configurar dominio + HTTPS
+- [x] Repo en GitHub (público): `github.com/Fuerzamarco/ai-seo-system`
+- [x] `.gitignore` raíz consolidado (Python + Node + IDE + OS), `data/articles/` versionado
+- [x] Netlify conectado al repo, build automático en cada push a `main`
+- [x] `netlify.toml` versionado en raíz (base/command/publish/Node version)
+- [x] `web/public/_headers` con security headers + cache policy
+- [x] URLs canónicas, sitemap, RSS y JSON-LD construidas desde `PUBLIC_SITE_URL`
+- [x] Slot `<meta name="google-site-verification">` controlado por `PUBLIC_GOOGLE_SITE_VERIFICATION`
+- [ ] **Activar Search Console** (UI): crear property URL prefix, set env var en Netlify, redeploy, verify, submit sitemap
+- [ ] **Custom domain (aplazado)**: cuando lo compres, configurar en Netlify + cambiar `PUBLIC_SITE_URL` + Change of address en Search Console
+
+**Decisión 2026-05-13**: deploy en Netlify, no GitHub Pages. Razones: build base directory nativo para monorepo, headers + redirects vía archivos versionados, preview deploys automáticos por PR, mejor DX.
+
+**URL actual**: `https://ai-seo-system.netlify.app` (temporal hasta migrar a custom domain).
 
 ---
 
@@ -154,3 +164,4 @@ Arquitectura: **monorepo**, Astro vive en `web/` y lee con `glob()` desde `../da
 - **2026-05-07** Publisher target inicial = WordPress self-hosted con REST API + Application Passwords. **APLAZADO** (ver siguiente).
 - **2026-05-07** Pivote: el sistema produce un sitio estático con Astro (monorepo, `web/`, glob loader sobre `../data/articles`). WordPress aplazado o adicional, no primario.
 - **2026-05-07** Stack web: Astro 5, Tailwind v4, TypeScript estricto. Rutas en español: `/articulos/`, `/categorias/`.
+- **2026-05-13** Deploy target = Netlify (no GitHub Pages). `netlify.toml` versionado. Dominio inicial = `ai-seo-system.netlify.app`; custom domain aplazado.

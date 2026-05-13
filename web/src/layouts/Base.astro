@@ -37,6 +37,9 @@ const websiteSchema = buildWebsiteSchema(ctx);
 
 const ADSENSE_PUBLISHER_ID =
   import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID || '';
+
+const GOOGLE_SITE_VERIFICATION =
+  import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || '';
 ---
 
 <!doctype html>
@@ -49,6 +52,9 @@ const ADSENSE_PUBLISHER_ID =
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {noindex && <meta name="robots" content="noindex" />}
+    {GOOGLE_SITE_VERIFICATION && (
+      <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
+    )}
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="es" href={canonical} />
     <link rel="alternate" hreflang="x-default" href={canonical} />

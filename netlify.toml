@@ -1,0 +1,17 @@
+# Netlify build config versionada.
+# Si hay valores en la UI que difieren, este archivo gana.
+
+[build]
+  base = "web/"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Las variables de entorno con valor sensible se configuran en
+# Netlify UI -> Site settings -> Environment variables, no aquí.
+# Variables esperadas (todas opcionales salvo PUBLIC_SITE_URL):
+#   PUBLIC_SITE_URL                  -> https://ai-seo-system.netlify.app (o tu custom domain)
+#   PUBLIC_ADSENSE_PUBLISHER_ID      -> vacío hasta aprobación AdSense
+#   PUBLIC_GOOGLE_SITE_VERIFICATION  -> valor del meta tag de Search Console
